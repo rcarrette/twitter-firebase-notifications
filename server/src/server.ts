@@ -4,14 +4,14 @@ import TwitterClient from './twitter/twitter-client'
 export default class Server {
     //#region fields
 
-    private port: number
+    private port: string
     private twitterClient: TwitterClient
 
     //#endregion
 
     //region constructor
 
-    constructor(port: number) {
+    constructor(port: string) {
         this.port = port
         this.twitterClient = new TwitterClient()
     }
@@ -38,6 +38,9 @@ export default class Server {
     private onRequestReceived(request, response): void {
         //TODO proper logging for cloud deployment
         console.log(`new request received: ${request.url}`)
+
+        response.writeHead(200, { 'Content-Type': 'text/plain' })
+        response.write('Hello World!')
 
         response.end()
     }

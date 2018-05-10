@@ -68,3 +68,6 @@ mongodb
 
 # Visual Studio Code debug files
 .vscode/
+
+# yaml configuration files
+*.yaml
