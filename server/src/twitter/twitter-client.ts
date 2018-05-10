@@ -32,7 +32,7 @@ export default class TwitterClient {
 
         this.api.get(usersLookupApiRoute, usersLookupPayload, (error, data) => {
             if (error) {
-                console.log(`twitter-client::startListening error: ${error}`) //TODO proper logging for cloud deployment
+                console.log(`twitter-client::startListening error: ${error}`)
 
                 return;
             }
@@ -40,7 +40,7 @@ export default class TwitterClient {
                 let userIdToFollow = _.first(data).id_str
 
                 if (userIdToFollow == null) {
-                    console.log('twitter-client::startListening userId is null') //TODO proper logging for cloud deployment
+                    console.log('twitter-client::startListening userId is null')
 
                     return;
                 }
@@ -61,7 +61,7 @@ export default class TwitterClient {
     }
 
     private onStreamError(error): void {
-        console.log(error) //TODO proper logging for cloud deployment
+        console.log(error)
     }
 
     //#endregion

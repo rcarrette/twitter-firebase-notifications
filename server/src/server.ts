@@ -36,7 +36,6 @@ export default class Server {
     }
 
     private onRequestReceived(request, response): void {
-        //TODO proper logging for cloud deployment
         console.log(`new request received: ${request.url}`)
 
         response.end()
