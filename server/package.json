@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "dev": "nodemon -e ts --ignore tests/ --exec \"npm run start\"",
+    "dev": "nodemon -e ts --ignore tests/ --exec \"npm run build-run\"",
     "tests": "tsc && mocha dist/tests/**/*.test.js",
+    "build-run": "tsc && node dist/src/index.js",
     "start": "npm install && tsc && node dist/src/index.js"
   },
   "author": "rcarrette",
