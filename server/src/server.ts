@@ -26,7 +26,7 @@ export default class Server {
 
             console.log(`twitter-live server running on port ${this._port}`)
 
-            //TODO Twitter client initialization
+            //TODO Twitter client initializations
         })
     }
 
