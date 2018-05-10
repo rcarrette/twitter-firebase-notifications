@@ -16,6 +16,7 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
+    "dotenv": "^5.0.1",
     "lodash": "^4.17.10",
     "twitter": "^1.7.1"
   }

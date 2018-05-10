@@ -2,12 +2,6 @@ import Twitter = require('twitter')
 import TwitterApiParameter from './interfaces/twitter-api-parameter'
 import * as _ from 'lodash'
 
-//TODO put in .env files and .gitignore them
-const consumerKey: string = ''
-const consumerSecret: string = ''
-const accessTokenKey: string = ''
-const accessTokenSecret: string = ''
-
 const usersLookupApiRoute: string = 'users/lookup'
 const statusesFilterApiRoute: string = 'statuses/filter'
 const userNameToFollow: string = 'nodejs'
@@ -23,10 +17,10 @@ export default class TwitterClient {
 
     constructor() {
         this.api = new Twitter({
-            consumer_key: consumerKey,
-            consumer_secret: consumerSecret,
-            access_token_key: accessTokenKey,
-            access_token_secret: accessTokenSecret
+            consumer_key: process.env.TWITTER_CONSUMER_KEY,
+            consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+            access_token_key: process.env.ACCESS_TOKEN_KEY,
+            access_token_secret: process.env.ACCESS_TOKEN_SECRET
         })
     }
 
