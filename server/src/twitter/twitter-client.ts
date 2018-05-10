@@ -4,7 +4,6 @@ import * as _ from 'lodash'
 
 const usersLookupApiRoute: string = 'users/lookup'
 const statusesFilterApiRoute: string = 'statuses/filter'
-const userNameToFollow: string = 'nodejs'
 
 export default class TwitterClient {
     //#region fields
@@ -29,7 +28,7 @@ export default class TwitterClient {
     //#region methods
 
     public startListening() {
-        let usersLookupPayload: TwitterApiParameter = { screen_name: userNameToFollow }
+        let usersLookupPayload: TwitterApiParameter = { screen_name: process.env.USER_NAME_TO_FOLLOW }
 
         this.api.get(usersLookupApiRoute, usersLookupPayload, (error, data) => {
             if (error) {
