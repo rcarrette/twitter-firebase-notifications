@@ -22,9 +22,9 @@ export default class Server {
 
         server.listen(this._port, (err) => {
             if (err)
-                console.log(`twitter-live server failed to start: ${err}`)
+                console.log(`twitter-firebase-notifications server failed to start: ${err}`)
 
-            console.log(`twitter-live server running on port ${this._port}`)
+            console.log(`twitter-firebase-notifications server running on port ${this._port}`)
 
             //TODO Twitter client initialization
         })
