@@ -1,4 +1,5 @@
 **Simple project for personal technical training purposes.**
 
-* Node/socket.io
+* Node
 * TypeScript
+* Firebase
