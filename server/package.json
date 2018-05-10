@@ -1,0 +1,19 @@
+{
+  "name": "twitter-live",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "nodemon -e ts --ignore tests/ --exec \"npm run build-run\"",
+    "tests": "tsc && mocha dist/tests/**/*.test.js",
+    "build-run": "tsc && node dist/src/index.js"
+  },
+  "author": "rcarrette",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^10.0.6",
+    "nodemon": "^1.17.4",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {}
+}
