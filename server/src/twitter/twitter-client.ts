@@ -3,10 +3,10 @@ import TwitterApiParameter from './interfaces/twitter-api-parameter'
 import * as _ from 'lodash'
 
 //TODO put in .env files and .gitignore them
-const consumerKey: string = 'LbLFmxdw1oV5DMLMMcO99Z0DD'
-const consumerSecret: string = 'OaRkUkZfpZNwelJ3cFtEFhEKSx6QBdbJ5tgwKEW5tUIozRfTTI'
-const accessTokenKey: string = '3246193737-hdzeVoVlKuBeX9864CPnkTZHltGyp1mr4gjuU6B'
-const accessTokenSecret: string = 'EJYsxjUdXtA8TAxsrU4WKuBwh3nMG0D0aq7TNb0NvKeMS'
+const consumerKey: string = ''
+const consumerSecret: string = ''
+const accessTokenKey: string = ''
+const accessTokenSecret: string = ''
 
 const usersLookupApiRoute: string = 'users/lookup'
 const statusesFilterApiRoute: string = 'statuses/filter'
