@@ -13,7 +13,7 @@ export default class Server {
 
     constructor(port: string) {
         this.port = port
-        this.twitterClient = new TwitterClient()
+        this.twitterClient = new TwitterClient()    //TODO DI
     }
 
     //#endregion
@@ -29,8 +29,13 @@ export default class Server {
             else {
                 console.log(`twitter-firebase-notifications server running on port ${this.port}`)
 
-                //start listening for new tweets
-                this.twitterClient.startListening()
+                try {
+                    //start listening for new tweets
+                    this.twitterClient.startListening()
+                }
+                catch (ex) {
+                    console.log(`error starting server: ${ex}`)
+                }
             }
         })
     }
