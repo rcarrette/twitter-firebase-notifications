@@ -1,5 +1,6 @@
 import Twitter = require('twitter')
 import TwitterApiParameter from './interfaces/twitter-api-parameter'
+import FirebaseNotificationsService from '../firebase/firebase-notifications-service'
 import * as _ from 'lodash'
 
 const usersLookupApiRoute: string = 'users/lookup'
@@ -9,6 +10,7 @@ export default class TwitterClient {
     //#region fields
 
     private api: any
+    private firebaseNotificationsService: FirebaseNotificationsService
 
     //#endregion
 
@@ -21,6 +23,7 @@ export default class TwitterClient {
             access_token_key: process.env.ACCESS_TOKEN_KEY,
             access_token_secret: process.env.ACCESS_TOKEN_SECRET
         })
+        this.firebaseNotificationsService = new FirebaseNotificationsService()  //TODO DI
     }
 
     //#endregion
@@ -46,18 +49,24 @@ export default class TwitterClient {
                 }
 
                 let statusesFilterPayload: TwitterApiParameter = { follow: userIdToFollow },
-                    stream = this.api.stream(statusesFilterApiRoute, statusesFilterPayload)
+                    stream = this.api.stream(statusesFilterApiRoute, statusesFilterPayload),
+                    self = this
 
-                // TODO fluent notation
-                stream.on('data', this.onNewTweetReceived)
+                //register hooks
+                stream.on('data', (event) => {
+                    //send push notification through Firebase
+                    console.log(`onNewTweetReceived: ${event.text}`)
+
+                    self.firebaseNotificationsService.notify(event.text)
+                })
                 stream.on('error', this.onStreamError)
+
+                console.log(`listening to tweets from ${process.env.USER_NAME_TO_FOLLOW}...`)
+
+                //start FCM service
+                this.firebaseNotificationsService.init()
             }
         })
-    }
-
-    private onNewTweetReceived(event): void {
-        //TODO Firebase push notification
-        console.log(event && event.text)
     }
 
     private onStreamError(error): void {
